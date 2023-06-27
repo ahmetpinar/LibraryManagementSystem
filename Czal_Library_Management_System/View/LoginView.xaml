@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Czal_Library_Management_System.View"
         xmlns:extensions="clr-namespace:Czal_Library_Management_System.Core"
+        xmlns:viewModel="clr-namespace:Czal_Library_Management_System.ViewModel"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="LoginView" Height="550" Width="800"
         WindowStartupLocation="CenterScreen"
@@ -14,6 +16,10 @@
         AllowsTransparency="True"
         MouseDown="Window_MouseDown">
 
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+    
     <Border CornerRadius="12">
         <Border.Background>
             <ImageBrush ImageSource="/Images/background-login.jpg"
@@ -85,7 +91,7 @@
                             <ControlTemplate TargetType="Button">
                                 <Border Width="20" Height="20" CornerRadius="2"
                                         Background="{TemplateBinding Background}">
-                                    
+
                                     <ContentPresenter HorizontalAlignment="Center"
                                                   VerticalAlignment="Center"/>
                                 </Border>
@@ -149,26 +155,26 @@
                                FontFamily="Montserrat"
                                FontWeight="Medium"
                                Margin="0 35 0 0"/>
-
-                    <TextBox x:Name="txtSchoolNumberOrEmail"
+                    <StackPanel Orientation="Horizontal"
+                                >
+                        <fa:IconImage Icon="Headset"/>
+                        <TextBox x:Name="txtLoginSchoolNumberOrEmail"
                              FontSize="14"
+                             Background="Transparent"
                              FontFamily="Montserrat"
                              FontWeight="Medium"
                              Foreground="Black"
                              BorderBrush="Black"
                              CaretBrush="Black"
                              BorderThickness="0 0 0 1"
-                             Margin="0 5 0 0 "
+                             Margin="5 5 0 0 "
                              Height="25"
                              VerticalContentAlignment="Center"
-                             Padding="28 0 0 0">
-                        <TextBox.Background>
-                            <ImageBrush ImageSource="/Images/user_icon.png"
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
-                        </TextBox.Background>
+                             />
+                    </StackPanel>
+                    
+                    
 
-                    </TextBox>
 
                     <TextBlock Text="Password"
                                Foreground="DarkSlateGray"
@@ -177,7 +183,7 @@
                                FontWeight="Medium"
                                Margin="0 15 0 0"/>
 
-                    <PasswordBox x:Name="pswPassword"
+                    <PasswordBox x:Name="pswLoginPassword"
                              FontSize="14"
                              FontFamily="Montserrat"
                              FontWeight="Medium"
@@ -206,7 +212,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Margin="0 20 0 0"
-                            Click="btnLogin_Click">
+                            Command="{Binding ShowRegisterCommand, UpdateSourceTrigger=PropertyChanged}">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -235,14 +241,14 @@
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Margin="0 10 0 0">
-                        
-                    <TextBlock Text="Forgot Password?"
+
+                        <TextBlock Text="Forgot Password?"
                                Foreground="DarkSlateGray"
                                FontSize="14"
                                FontFamily="Montserrat"
                                FontWeight="Medium"/>
 
-                    <TextBlock Text="Reset"
+                        <TextBlock Text="Reset"
                                Foreground="Black"
                                FontSize="14"
                                FontFamily="Montserrat"
@@ -268,7 +274,7 @@
                                FontFamily="Montserrat"
                                FontWeight="Medium"
                                Margin="10 0 0 0"/>
-                        
+
                     </StackPanel>
                 </StackPanel>
             </Grid>

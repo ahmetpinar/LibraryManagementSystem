@@ -24,10 +24,9 @@ namespace Czal_Library_Management_System.View
             InitializeComponent();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-                DragMove();
+            Application.Current.Shutdown();
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
@@ -35,14 +34,10 @@ namespace Czal_Library_Management_System.View
             WindowState = WindowState.Minimized;
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
         }
     }
 }
